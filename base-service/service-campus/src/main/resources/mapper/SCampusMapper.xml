@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mso.base.cloud.campus.mybatis.mapper.SCampusRepository">
+    <update id="updateShelfState">
+        update s_campus set state = #{shelfState},start_time='9999-12-31 23:59:59' where store_id = #{storeId}
+    </update>
+    <select id="getCampuses" resultType="com.mso.base.cloud.campus.domain.vo.SCampusVo">
+        SELECT id, `name`
+        FROM s_campus
+        WHERE is_delete = 0
+            AND state = 1
+    </select>
+
+    <!-- 查询校区管理列表 -->
+    <select id="getCampusList" resultType="com.mso.base.cloud.campus.domain.vo.CampusListVo">
+        SELECT
+            sc.id,
+            sc.name,
+            sc.address,
+            sc.business_hours AS businessHours,
+            CASE
+            WHEN sc.start_time > now( ) THEN
+            0 ELSE 1
+            END state,
+            count( pa.product_id ) AS productNum,
+            count( pb.product_id ) AS subscribeNum
+        FROM s_campus sc
+            LEFT JOIN r_campus_product rcpa ON sc.id = rcpa.campus_id
+            LEFT JOIN product pa ON rcpa.product_id = pa.product_id
+                AND pa.type = 1
+            LEFT JOIN product pb ON rcpa.product_id = pb.product_id
+                AND pb.type = 2
+        WHERE
+            sc.store_id = #{storeId}
+            <if test="name != null and name != ''">
+                AND sc.name LIKE CONCAT('%',#{name},'%')
+            </if>
+            <if test="state != null and state == 0">
+                AND sc.start_time > now( )
+            </if>
+            <if test="state != null and state == 1">
+                AND now( ) > sc.start_time
+            </if>
+        GROUP BY sc.id
+        ORDER BY
+            state ASC,
+            sc.create_time DESC,
+            sc.start_time DESC
+    </select>
+
+    <select id="findCampusProduct" parameterType="java.lang.Integer"
+            resultType="com.mso.base.cloud.campus.domain.vo.CampusProductVo">
+        SELECT
+            tb_p.product_id productId,
+            tb_p.`name` name,
+            tb_p.cover_image coverImage,
+            tb_p.intro intro,
+            tb_p.value_price originalPrice,
+            tb_p.real_price currentPrice
+        FROM r_campus_product tb_rcp
+            LEFT JOIN product tb_p ON tb_rcp.product_id = tb_p.product_id AND tb_p.is_delete = 0
+        WHERE tb_rcp.campus_id = #{id}
+    </select>
+
+    <!-- 根据校区名称和商铺id查询校区 -->
+    <select id="getByNameAndStoreId" resultType="com.mso.base.cloud.campus.domain.po.SCampus">
+        SELECT
+            *
+        FROM
+            s_campus
+        WHERE
+            name = #{name}
+            AND store_id = #{storeId}
+    </select>
+
+</mapper>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+
+    <!-- 文件输出格式 -->
+    <property name="PATTERN" value="%-12(%d{yyyy-MM-dd HH:mm:ss.SSS}) |-%-5level [%thread] %c [%L] -| %msg%n"/>
+    <!-- 日志文件目录 -->
+    <property name="LOG_DIR" value="bbclsop-logs"/>
+
+    <logger name="com.netflix" level="WARN"/>
+    <logger name="org.apache.http" level="INFO"/>
+    <logger name="com.zaxxer.hikari" level="INFO"/>
+    <logger name="org.springframework" level="WARN"/>
+    <logger name="com.sun.jersey" level="WARN"/>
+    <logger name="org.xnio" level="WARN"/>
+    <logger name="io.undertow" level="INFO"/>
+
+    <!-- 开发环境 -->
+    <springProfile name="dev">
+        <root level="DEBUG"/>
+        <logger name="com.mshuoke.base.cloud" level="DEBUG"/>
+    </springProfile>
+
+    <!-- 测试环境 -->
+    <springProfile name="test">
+        <!-- 每天产生一个文件 -->
+        <appender name="TEST_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <!-- 文件名称 -->
+                <fileNamePattern>${LOG_DIR}/bbclsop.%d{yyyy-MM-dd}.log</fileNamePattern>
+                <!-- 文件最大保存历史数量 -->
+                <MaxHistory>100</MaxHistory>
+            </rollingPolicy>
+            <layout class="ch.qos.logback.classic.PatternLayout">
+                <pattern>${PATTERN}</pattern>
+            </layout>
+        </appender>
+        <root level="DEBUG">
+            <appender-ref ref="TEST_FILE"/>
+        </root>
+        <logger name="com.mshuoke.base.cloud" level="DEBUG"/>
+    </springProfile>
+
+    <!-- 预生产环境 -->
+    <springProfile name="pre">
+        <appender name="PRE_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <fileNamePattern>${LOG_DIR}/bbclsop.%d{yyyy-MM-dd}.log</fileNamePattern>
+                <MaxHistory>100</MaxHistory>
+            </rollingPolicy>
+            <layout class="ch.qos.logback.classic.PatternLayout">
+                <pattern>${PATTERN}</pattern>
+            </layout>
+        </appender>
+        <root level="INFO">
+            <appender-ref ref="PRE_FILE"/>
+        </root>
+        <logger name="com.mshuoke.base.cloud" level="INFO"/>
+    </springProfile>
+
+    <!-- 生产环境 -->
+    <springProfile name="prod">
+        <appender name="PROD_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <fileNamePattern>${LOG_DIR}/bbclsop.%d{yyyy-MM-dd}.log</fileNamePattern>
+                <MaxHistory>100</MaxHistory>
+            </rollingPolicy>
+            <layout class="ch.qos.logback.classic.PatternLayout">
+                <pattern>${PATTERN}</pattern>
+            </layout>
+        </appender>
+        <root level="INFO">
+            <appender-ref ref="PROD_FILE"/>
+        </root>
+        <logger name="com.mshuoke.base.cloud" level="INFO"/>
+    </springProfile>
+
+    <!-- 用于动态改变日志级别 -->
+    <contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
+        <resetJUL>true</resetJUL>
+    </contextListener>
+
+</configuration>
