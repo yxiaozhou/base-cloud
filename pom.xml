@@ -9,6 +9,9 @@
         <module>base-service</module>
         <module>base-bootadmin</module>
         <module>base-auth</module>
+        <module>base-service-api</module>
+        <module>base-common</module>
+        <module>base-websocket</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -51,6 +54,7 @@
         <oracle.version>10.2.0.4.0</oracle.version>
 
         <!--自定义版本-->
+        <base-cloud.version>0.0.1-SNAPSHOT</base-cloud.version>
         <opencloud.common.version>2.1.0-SNAPSHOT</opencloud.common.version>
         <opencloud.base-client.version>2.1.0-SNAPSHOT</opencloud.base-client.version>
         <opencloud.auth-client.version>2.1.0-SNAPSHOT</opencloud.auth-client.version>
@@ -104,6 +108,41 @@
                 <version>${spring-cloud.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.mso.base.cloud</groupId>
+                <artifactId>base-auth</artifactId>
+                <version>${base-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.mso.base.cloud</groupId>
+                <artifactId>base-bootadmin</artifactId>
+                <version>${base-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.mso.base.cloud</groupId>
+                <artifactId>base-common</artifactId>
+                <version>${base-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.mso.base.cloud</groupId>
+                <artifactId>base-eureka</artifactId>
+                <version>${base-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.mso.base.cloud</groupId>
+                <artifactId>base-getway</artifactId>
+                <version>${base-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.mso.base.cloud</groupId>
+                <artifactId>base-service</artifactId>
+                <version>${base-cloud.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.mso.base.cloud</groupId>
+                <artifactId>base-service-api</artifactId>
+                <version>${base-cloud.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

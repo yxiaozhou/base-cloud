@@ -13,6 +13,8 @@
     <packaging>pom</packaging>
     <modules>
         <module>service-helloworld</module>
+        <module>service-campus</module>
+        <module>service-product</module>
     </modules>
 
     <dependencies>
@@ -36,6 +38,11 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.mso.base.cloud</groupId>
+            <artifactId>base-common</artifactId>
         </dependency>
     </dependencies>
 </project>

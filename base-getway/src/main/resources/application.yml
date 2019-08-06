@@ -24,6 +24,20 @@ spring:
             - Path=/abcddd/**
           filters:
             - StripPrefix=1
+        #http://127.0.0.1:8888/abcddd/hi?name=forezp
+        - id: service-campus
+          uri: lb://service-campus
+          predicates:
+            - Path=/campus/**
+          filters:
+            - StripPrefix=1
+        #http://127.0.0.1:8888/abcddd/hi?name=forezp
+        - id: service-product
+          uri: lb://service-product
+          predicates:
+            - Path=/product/**
+          filters:
+            - StripPrefix=1
 #  boot:
 #    admin:
 #      client:
