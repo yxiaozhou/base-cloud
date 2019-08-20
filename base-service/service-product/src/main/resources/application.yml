@@ -17,7 +17,7 @@ spring:
     name: service-product
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:mysql://127.0.0.1:3306/babyclass?useUnicode=true&characterEncoding=utf8&useSSL=false&allowMultiQueries=true&serverTimezone=GMT%2B8
+    url: jdbc:mysql://127.0.0.1:3306/base-cloud?useUnicode=true&characterEncoding=utf8&useSSL=false&allowMultiQueries=true&serverTimezone=GMT%2B8
     username: root
     password: 123456
     hikari:
@@ -44,4 +44,28 @@ spring:
         testOnReturn: true     # 当调用return Object方法时，是否进行有效性检查
         numTestsPerEvictionRun: 8 # 对于“空闲链接”检测线程而言，每次检测的链接资源的个数。默认为3.
         timeBetweenEvictionRunsMillis: 30000  # “空闲链接”检测线程，检测的周期，毫秒数。如果为负值，表示不运行“检测线程”。默认为-1.
+
+  shardingsphere:
+    datasource:
+      slave:
+        type:
+  profiles:
+    include:
+      sjdbc
+
+
+sjdb0:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/database0?useUnicode=true&characterEncoding=utf8&useSSL=false&allowMultiQueries=true&serverTimezone=GMT%2B8
+    username: root
+    password: 123456
+sjdb1:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/database1?useUnicode=true&characterEncoding=utf8&useSSL=false&allowMultiQueries=true&serverTimezone=GMT%2B8
+    username: root
+    password: 123456
 

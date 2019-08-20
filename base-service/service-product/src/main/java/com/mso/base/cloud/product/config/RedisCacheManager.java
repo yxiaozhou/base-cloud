@@ -1,5 +1,7 @@
 package com.mso.base.cloud.product.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.cache.CacheManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
@@ -12,14 +14,27 @@ import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
+import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.time.Duration;
 
 @Component
 public class RedisCacheManager {
 
+    @Resource
+    private DataSource dataSource;
+
     @Primary
     @Bean
     public CacheManager cacheManager(RedisConnectionFactory redisConnectionFactory) {
+        try {
+            Connection c = dataSource.getConnection();
+            System.out.println(c.getClientInfo());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         //缓存配置对象
         RedisCacheConfiguration redisCacheConfiguration = RedisCacheConfiguration.defaultCacheConfig();
 

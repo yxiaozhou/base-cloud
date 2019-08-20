@@ -55,12 +55,7 @@
 
         <!--自定义版本-->
         <base-cloud.version>0.0.1-SNAPSHOT</base-cloud.version>
-        <opencloud.common.version>2.1.0-SNAPSHOT</opencloud.common.version>
-        <opencloud.base-client.version>2.1.0-SNAPSHOT</opencloud.base-client.version>
-        <opencloud.auth-client.version>2.1.0-SNAPSHOT</opencloud.auth-client.version>
-        <opencloud.msg-client.version>2.1.0-SNAPSHOT</opencloud.msg-client.version>
-        <opencloud.bpm-client.version>2.1.0-SNAPSHOT</opencloud.bpm-client.version>
-        <opencloud.scheduler-client.version>2.1.0-SNAPSHOT</opencloud.scheduler-client.version>
+        <sharding-sphere.version>4.0.0-RC1</sharding-sphere.version>
     </properties>
 
     <dependencies>

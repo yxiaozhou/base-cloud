@@ -32,20 +32,20 @@
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
 
-        <javaModelGenerator targetPackage="com.mso.base.cloud.system.domain.po" targetProject="src/main/java">
+        <javaModelGenerator targetPackage="com.mso.base.cloud.product.domain.po" targetProject="src/main/java">
             <property name="enableSubPackages" value="false"/>
             <property name="trimStrings" value="false"/>
         </javaModelGenerator>
 
-        <sqlMapGenerator targetPackage="mybatis/mapper" targetProject="src/main/resources">
+        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources">
             <property name="enableSubPackages" value="false"/>
         </sqlMapGenerator>
 
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.mso.base.cloud.system.mybatis.mapper" targetProject="src/main/java">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.mso.base.cloud.product.mybatis.mapper" targetProject="src/main/java">
             <property name="enableSubPackages" value="false"/>
         </javaClientGenerator>
 
-        <table tableName="sys_user" domainObjectName="SysUser"
+        <table tableName="product" domainObjectName="Product"
                schema="base-cloud" catalog="base-cloud"
                enableDeleteByPrimaryKey="true"
                enableSelectByExample="false"
