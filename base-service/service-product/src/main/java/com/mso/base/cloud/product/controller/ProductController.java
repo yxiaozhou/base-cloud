@@ -11,8 +11,7 @@ import org.springframework.web.bind.annotation.*;
 /**
  * 商品
  *
- * @author yeshimin
- * @create 2019-07-08
+ * @author tim
  */
 @RestController
 @RequestMapping("/products")
@@ -24,12 +23,12 @@ public class ProductController extends BaseController {
     private ProductService productService;
 
     @GetMapping
-    public String get(){
+    public String get() {
         return campusFeign.getCampusDetail("1").toString();
     }
 
     @PostMapping
-    public ResultVo add(@RequestBody  AddProductDto dto){
+    public ResultVo add(@RequestBody AddProductDto dto) {
         return ResultVo.wrapData(productService.addProduct(dto));
     }
 

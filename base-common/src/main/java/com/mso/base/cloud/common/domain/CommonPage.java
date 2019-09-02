@@ -9,7 +9,7 @@ import lombok.Data;
  * @author dana
  * @create 2018-09-06 10:52
  * @update 2018-09-06 10:52
- * @update 2018-09-13 by yeshimin 字段命名调整
+ * @update 2018-09-13 by tim 字段命名调整
  **/
 @Data
 public class CommonPage {

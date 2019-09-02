@@ -15,7 +15,7 @@ import org.springframework.web.method.annotation.MethodArgumentTypeMismatchExcep
 /**
  * 全局异常处理器
  *
- * @author yeshimin
+ * @author tim
  * @update 2018-04-19
  * @create 2018-01-05
  */
@@ -28,7 +28,7 @@ public class GlobalExceptionHandler {
      *
      * @param e 异常对象
      * @return 处理后的响应结果
-     * @author yeshimin
+     * @author tim
      * @create 2018-01-30
      */
     @ResponseBody
@@ -43,7 +43,7 @@ public class GlobalExceptionHandler {
      *
      * @param e 异常对象
      * @return 处理后的响应结果
-     * @author yeshimin
+     * @author tim
      * @create 2018-01-30
      */
     @ResponseBody
@@ -58,7 +58,7 @@ public class GlobalExceptionHandler {
      *
      * @param e 异常对象
      * @return 处理后的响应结果
-     * @author yeshimin
+     * @author tim
      * @create 2019-03-21
      */
     @ResponseBody

@@ -73,7 +73,7 @@ public class RequestUtils {
      *
      * @param name 属性名
      * @param obj  值
-     * @author yeshimin
+     * @author tim
      * @create 2018-09-21
      */
     public static void setRequestAttribute(String name, Object obj) {
@@ -87,7 +87,7 @@ public class RequestUtils {
      *
      * @param name 属性名
      * @return 指定属性名的header
-     * @author yeshimin
+     * @author tim
      * @create 2018-09-21
      */
     public static String getRequestHeader(String name) {
@@ -101,7 +101,7 @@ public class RequestUtils {
      *
      * @param request
      * @return
-     * @author yeshimin
+     * @author tim
      * @create 2019-06-12
      */
     public static Map<String, String> getRequestParams(HttpServletRequest request) {
@@ -118,7 +118,7 @@ public class RequestUtils {
      *
      * @param request
      * @return
-     * @author yeshimin
+     * @author tim
      * @create 2019-07-09
      */
     public static String getRequestParamsString(HttpServletRequest request) {

@@ -6,7 +6,7 @@ import java.time.format.DateTimeFormatter;
 /**
  * 公共常量
  *
- * @author yeshimin
+ * @author tim
  * @create 2018-09-10
  */
 public class Common {

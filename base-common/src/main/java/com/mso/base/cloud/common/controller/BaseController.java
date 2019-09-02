@@ -9,7 +9,7 @@ import org.springframework.validation.Errors;
 /**
  * 基类Controller
  *
- * @author yeshimin
+ * @author tim
  * @create 2018-09-21
  */
 public abstract class BaseController {
@@ -18,7 +18,7 @@ public abstract class BaseController {
      * 从 request headers 中取出 token
      *
      * @return token
-     * @author yeshimin
+     * @author tim
      * @create 2018-09-21
      */
     protected String getToken() {
@@ -29,7 +29,7 @@ public abstract class BaseController {
      * 从 request attributes 中取出 user_id
      *
      * @return 用户ID
-     * @author yeshimin
+     * @author tim
      * @create 2018-09-21
      */
     protected String getUserId() {
@@ -40,9 +40,9 @@ public abstract class BaseController {
      * 检查参数错误
      *
      * @param errors
-     * @author yeshimin
+     * @author tim
      * @create 2018-09-21
-     * @update 2018-09-26 有参数错误直接抛异常 by yeshimin
+     * @update 2018-09-26 有参数错误直接抛异常 by tim
      */
     protected void checkParamsError(Errors errors) {
         if (errors.hasErrors()) {

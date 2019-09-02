@@ -9,7 +9,7 @@ import java.util.HashMap;
 /**
  * 接口响应模型
  *
- * @author yeshimin
+ * @author tim
  * @update 2018-04-19
  * @create 2017-04-20
  */

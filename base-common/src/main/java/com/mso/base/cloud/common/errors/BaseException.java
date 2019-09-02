@@ -5,7 +5,7 @@ import lombok.Data;
 /**
  * 基类异常
  *
- * @author yeshimin
+ * @author tim
  * @create 2018-01-05
  */
 @Data

@@ -3,7 +3,7 @@ package com.mso.base.cloud.common.errors;
 /**
  * 错误码
  *
- * @author yeshimin
+ * @author tim
  * @create 2018-04-19
  */
 public class ErrorCode {
